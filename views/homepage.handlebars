@@ -1,0 +1,14 @@
+<h1>Welcome to Tech Blog</h1>
+
+{{#if posts.length}}
+    <ul>
+        {{#each posts}}
+            <li>
+                <h2><a href="/post/{{id}}">{{title}}</a></h2>
+                <p>Posted by {{username}} on {{createdAt}}</p>
+            </li>
+        {{/each}}
+    </ul>
+{{else}}
+    <p>No blog posts available. Check back later!</p>
+{{/if}}
