@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User } = require('../models');
+const { Post, User } = require('../../models');
 
 
 router.get('/', async (req, res) => {
@@ -61,7 +61,7 @@ router.get('/', async (req, res) => {
     }
   }),
 
-  router.update('/', async (req, res) => {
+  router.put('/', async (req, res) => {
     try {
       const { title, content } = req.body;
       await Post.update(

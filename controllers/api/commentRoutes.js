@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Comment, User } = require('../models');
+const { Comment, User } = require('../../models');
 
 const commentController = {
   async addComment(req, res) {
@@ -16,7 +16,7 @@ const commentController = {
     }
   },
 
-  router.get('/post/:id', async (req, res) => {
+  async getComments(req, res) {  // Moved the route handler function here
     try {
       const commentData = await Comment.findAll({
         where: {
@@ -36,7 +36,10 @@ const commentController = {
     } catch (err) {
       res.status(500).json(err);
     }
-  });
-  
+  },
+};
+
+// Define the route handlers directly on the router
+router.get('/post/:id', commentController.getComments);
 
 module.exports = router;
